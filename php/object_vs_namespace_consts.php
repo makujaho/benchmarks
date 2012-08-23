@@ -14,7 +14,8 @@ foreach ($testconstants as $constnumber) {
 
     $constants = '<?php namespace testspace' . $constnumber . ';';
     for ($i = 0; $i <= $constnumber; ++$i) {
-        $constants .= "define(__NAMESPACE__ . '\constant$i', 'constval$i');";
+        //$constants .= "define(__NAMESPACE__ . '\constant$i', 'constval$i');";
+        $constants .= "define('testspace$constnumber\constant$i', 'constval$i');";
     }
     $n_fname = $d . '/tmp/object_vs_namespace_namespace' . $constnumber . '.php';
     file_put_contents($n_fname, $constants);
@@ -24,7 +25,7 @@ foreach ($testconstants as $constnumber) {
 
     $object = '<?php class testclass' . $constnumber . ' {';
     for ($i = 0; $i <= $constnumber; ++$i) {
-        $object .= "const constant$i = 'constval$i';";
+        $object .= "const FFFFFFFFFFFFFFFFFconstant$i = 'constval$i';";
     }
     $object .= '}';
     $o_fname = $d . '/tmp/object_vs_namespace_object' . $constnumber . '.php';
@@ -37,6 +38,7 @@ foreach ($testconstants as $constnumber) {
     $t4 = microtime(true);
 
     require $n_fname;
+    require $o_fname;
     for ($i = 0; $i <= $testcount; ++$i) {
         // Access random constant
         $c = rand(0, $constnumber);
@@ -46,7 +48,6 @@ foreach ($testconstants as $constnumber) {
     echo 'Accessing object'.E;
     $t5 = microtime(true);
     
-    require $o_fname;
     for ($i = 0; $i <= $testcount; ++$i) {
         // Access random object const
         $c = rand(0, $constnumber);
