@@ -1,5 +1,8 @@
 <?php
 
+ini_set('display_errors','On');
+error_reporting(E_ALL);
+
 define('E', PHP_EOL);
 // TODO: Set *any* code optimizers like APC or Zend Optimizer to disabled
 
@@ -38,7 +41,6 @@ foreach ($testconstants as $constnumber) {
     $t4 = microtime(true);
 
     require $n_fname;
-    require $o_fname;
     for ($i = 0; $i <= $testcount; ++$i) {
         // Access random constant
         $c = rand(0, $constnumber);
@@ -48,10 +50,11 @@ foreach ($testconstants as $constnumber) {
     echo 'Accessing object'.E;
     $t5 = microtime(true);
     
+    require $o_fname;
     for ($i = 0; $i <= $testcount; ++$i) {
         // Access random object const
         $c = rand(0, $constnumber);
-        $t = constant("testclass$constnumber::constant$c");
+        $t = constant("testclass$constnumber::FFFFFFFFFFFFFFFFFconstant$c");
     }
     $t6 = microtime(true);
 
