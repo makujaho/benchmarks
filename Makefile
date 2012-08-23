@@ -5,5 +5,7 @@ all:
 php:
 	php php/*.php
 
+.PHONY: clean php
+
 clean:
 	rm -f */tmp/* 
