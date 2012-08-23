@@ -6,7 +6,7 @@
  * More information: visit: http://blog.hoeja.de/sql-left-vs-year.html
  */
 
-use benchmark;
+use mysql;
 DROP PROCEDURE IF EXISTS benchleft;
 DELIMITER //
 CREATE PROCEDURE benchleft()
@@ -37,3 +37,6 @@ v1loop: WHILE v2 < 10000000 DO
 END WHILE v1loop;
 END//
 DELIMITER ;
+
+
+call benchleft(); call benchyear();
