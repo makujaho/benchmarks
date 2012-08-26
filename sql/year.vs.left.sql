@@ -39,5 +39,5 @@ END WHILE v1loop;
 END//
 DELIMITER ;
 
-call benchleft(); 
-call benchyear();
+-- call benchleft(); 
+-- call benchyear();
