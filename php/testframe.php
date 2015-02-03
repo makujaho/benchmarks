@@ -2,24 +2,24 @@
 
 require_once 'benchframe.php';
 
-class example_timer extends benchframe {
+class ExampleTimer extends Benchframe {
     protected $version = 3;
 }
 
-$timer = new example_timer();
+$timer = new ExampleTimer();
 
-$timer->add_timing();
+$timer->addTiming();
 
 for ($i = 0; $i<=10000;$i++) {
     $e = $i + 1;
 }
 
-$timer->add_timing('I plus one.');
+$timer->addTiming('I plus one.');
 
 for ($i = 0; $i<=10000;$i++) {
     $e = $i++;
 }
 
-$timer->add_timing('Plus plus i');
+$timer->addTiming('Plus plus i');
 
 echo $timer;

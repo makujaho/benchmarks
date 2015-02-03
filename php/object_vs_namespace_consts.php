@@ -5,11 +5,11 @@ error_reporting(E_ALL);
 
 require_once 'benchframe.php';
 
-class object_vs_namespace extends benchframe {
+class ObjectVsNamespace extends Benchframe {
     protected $version = 1;
 }
 
-$timer          = new object_vs_namespace();
+$timer          = new ObjectVsNamespace();
 $testcount      = 100000;
 $testconstants  = array(10,100,1000,5000);
 $d              = dirname(__FILE__);
@@ -38,7 +38,7 @@ foreach ($testconstants as $constnumber) {
 
     echo 'Generated files. Starting tests.'.E;
     echo 'Accessing constants'.E;
-    $timer->add_timing();
+    $timer->addTiming();
 
     require $n_fname;
     for ($i = 0; $i <= $testcount; ++$i) {
@@ -48,7 +48,7 @@ foreach ($testconstants as $constnumber) {
     }
 
     echo 'Accessing object'.E;
-    $timer->add_timing('Namespace - Constants: ' . $constnumber);
+    $timer->addTiming('Namespace - Constants: ' . $constnumber);
     
     require $o_fname;
     for ($i = 0; $i <= $testcount; ++$i) {
@@ -56,7 +56,7 @@ foreach ($testconstants as $constnumber) {
         $c = rand(0, $constnumber);
         $t = constant("testclass$constnumber::FFFFFFFFFFFFFFFFFconstant$c");
     }
-    $timer->add_timing('Object    - Constants: ' . $constnumber);
+    $timer->addTiming('Object    - Constants: ' . $constnumber);
 
     echo 'Done testing. Results:'.E;
     echo $timer;

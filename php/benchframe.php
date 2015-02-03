@@ -11,7 +11,7 @@ require_once 'general_config.php';
  * @version 1.0.0
  * @author  MKzero <info@linux-web-development.de>
  */
-abstract class benchframe {
+abstract class Benchframe {
     /**
      * Array that holds benmark timings
      *
@@ -54,7 +54,7 @@ abstract class benchframe {
      *
      * @access  public
      */
-    public function add_timing($name = null) {
+    public function addTiming($name = null) {
         if ($name === null) {
             prev($this->times_names);
             $name = key($this->times_names) + 1;
